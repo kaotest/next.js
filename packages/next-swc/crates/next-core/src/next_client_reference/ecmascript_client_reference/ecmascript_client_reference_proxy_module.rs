@@ -257,12 +257,12 @@ impl EcmascriptChunkItem for ProxyModuleChunkItem {
     }
 
     #[turbo_tasks::function]
-    fn content_with_availability_info(
+    fn content_with_async_module_info(
         &self,
-        availability_info: Value<AvailabilityInfo>,
+        chunk_group_root: Vc<Box<dyn Module>>,
     ) -> Vc<EcmascriptChunkItemContent> {
         self.inner_proxy_module_chunk_item
-            .content_with_availability_info(availability_info)
+            .content_with_async_module_info(chunk_group_root)
     }
 
     #[turbo_tasks::function]
